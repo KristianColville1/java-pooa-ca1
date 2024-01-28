@@ -14,6 +14,8 @@ public class MainController {
 
     // appRunning is used to keep track of the applications running status.
     private boolean appRunning;
+    // dataController is responsible for handling the data logic
+    private DataController dataController;
 
     /**
      * Constructor for the MainController class. This constructor initializes
