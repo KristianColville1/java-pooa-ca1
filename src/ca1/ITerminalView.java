@@ -21,8 +21,9 @@ public interface ITerminalView {
 
     /**
      * Informs user of the expected input to be received.
+     * @param range should specify the expected integer range.
      */
-    void selectANumberRange();
+    void selectANumberRange(int range);
 
     /**
      * Informs the user that the input given is invalid.
