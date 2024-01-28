@@ -25,6 +25,7 @@ public class MainController {
      * Responsible for running the application processes for the user.
      */
     public void startApp(){
+        TerminalView menu = new TerminalView();
         // While loop that continues as long as appRunning is true
         while(appRunning){
             /**
@@ -38,8 +39,10 @@ public class MainController {
              * down the application.
              * 
              */
+            
+            menu.displayWelcomeOptions();
             try {
-                // Application Logic
+                
             } catch(Exception e){
                 System.out.println("Error: " + e.getMessage());
             }

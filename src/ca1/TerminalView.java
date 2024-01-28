@@ -4,6 +4,8 @@
  */
 package ca1;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
 /**
  *
  * @author kristian
@@ -26,11 +28,22 @@ public class TerminalView {
         System.out.println("#-----------------------------------------------------#");
         System.out.println("      Welcome to the Student Management System        ");
         System.out.println("#-----------------------------------------------------#");
-        System.out.println("\n\n");
+        System.out.println("\n");
         System.out.println("      Please Select an Option:");
         System.out.println("      (1) Validate Student Data From File");
         System.out.println("      (2) Add New Student Data");
         System.out.println("      (3) Exit");
-        System.out.println("\nYour Selection: ");
+        System.out.println("Your Selection: ");
+    }
+    
+    public int getUserChoice(){
+        int choice = 0;
+        try{
+            Scanner sc = new Scanner(System.in);
+            choice = sc.nextInt();
+        } catch(InputMismatchException e){
+            System.out.println("You must enter a number: 1 or 2 or 3");
+        }
+        return choice;
     }
 }
