@@ -38,7 +38,12 @@ public class DataController implements IDataController {
      */
     @Override
     public void handleUserFlow() {
-        
+        int userChoice = 0;
+        try {
+            userChoice = getUserChoice();
+        } catch(InputMismatchException e){
+            System.out.println(e);
+        }
     }
 
     @Override
