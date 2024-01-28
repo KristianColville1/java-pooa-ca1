@@ -4,16 +4,14 @@
  */
 package ca1;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 /**
  *
- * @author kristian
+ * @author kristian colville
  *
  * Handles the terminal view for the user.
+ * TerminalView implements the ITerminalView interface.
  */
-public class TerminalView {
+public class TerminalView implements ITerminalView {
 
     /**
      * TerminalView Constructor
@@ -25,6 +23,7 @@ public class TerminalView {
     /**
      * Displays the welcome message and options for the user.
      */
+    @Override
     public void displayWelcomeOptions() {
         System.out.println("#-----------------------------------------------------#");
         System.out.println("      Welcome to the Student Management System        ");
