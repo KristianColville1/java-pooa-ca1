@@ -30,6 +30,10 @@ public class DataController implements IDataController {
     }
     
     @Override
+    public void handleUserFlow(){
+        
+    }
+    @Override
     public int getUserChoice(){
         return 0;
     }

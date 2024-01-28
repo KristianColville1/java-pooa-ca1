@@ -13,7 +13,11 @@ package ca1;
  * implement.
  */
 public interface IDataController {
-
+    /**
+     * Should handle the user flow of the application and trigger conditional
+     * events.
+     */
+    void handleUserFlow();
     /**
      * Gets the users selection through the terminal and
      *
