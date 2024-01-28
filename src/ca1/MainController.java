@@ -23,12 +23,21 @@ public class MainController {
      * MainController objects.
      * 
      * Dependencies are injected here.
+     * 
+     * Event listeners are injected here.
      */
     public MainController() {
         this.appRunning = true;
         this.menu = new TerminalView();
-         // menu dependency injected for datacontroller
-        this.dataController = new DataController(menu);
+        /**
+         * Injecting dependencies into the DataController.
+         * menu: provides access to the menu instance to modify the terminal
+         * lambda expression: enables DataController to control the applications
+         * running state.
+         * When the lambda expression is invoked it will signal the application
+         * to stop.
+         */
+        this.dataController = new DataController(menu, () -> appRunning = false);
     }
 
     /**
@@ -51,6 +60,7 @@ public class MainController {
 
             // displays the welcome options to the user in the terminal
             menu.displayWelcomeOptions();
+            
             try {
                 // Application Logic
             } catch (Exception e) {
