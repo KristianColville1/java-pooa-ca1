@@ -10,7 +10,7 @@ package ca1;
  *
  * DataController is responsible for handling data logic from the user.
  */
-public class DataController {
+public class DataController implements IDataController {
 
     private TerminalView menu;
 
@@ -23,5 +23,9 @@ public class DataController {
     public DataController(TerminalView menu) {
         this.menu = menu;
     }
-
+    
+    @Override
+    public int getUserChoice(){
+        return 0;
+    }
 }
