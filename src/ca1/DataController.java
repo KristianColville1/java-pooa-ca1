@@ -33,22 +33,42 @@ public class DataController implements IDataController {
     }
 
     /**
-     * After menu options are displayed to the user.
-     * Get the user's selection and 
+     * After menu options are displayed to the user. Get the user's selection
+     * and
      */
     @Override
     public void handleUserFlow() {
-        int userChoice = 0;
-        try {
-            userChoice = getUserChoice();
-        } catch(InputMismatchException e){
-            System.out.println(e);
-        }
     }
 
+    /**
+     * Gets input from the user using Scanner.
+     *
+     * Uses recursion until it gets valid input from the user.
+     *
+     * @param range indicates the options available to the user between 1 and
+     * range.
+     * @param onInvalidInput provides an option to call another method if this
+     * action fails.
+     * @return the users input an integer.
+     */
     @Override
-    public int getUserChoice() {
-        Scanner choice = new Scanner(System.in);
-        return choice.nextInt();
+    public int getUserChoice(int range, Runnable onInvalidInput) {
+        int userChoice = 0;
+        Scanner sc = new Scanner(System.in);
+        try {
+            userChoice = sc.nextInt();
+            // if the input is valid
+            // and greater than range or less than 1
+            if (userChoice > range || userChoice < 1) {
+                System.out.println("Please select a number between 1 - " + range);
+                System.out.println("Enter: ");
+                getUserChoice(range, onInvalidInput); // recursion to loop back and get valid int
+            }
+        } catch (InputMismatchException e) {
+            // if the input is invalid inform them and use recursion to repeat.
+            System.out.println("Your input was not a valid number: " + userChoice);
+            onInvalidInput.run();
+        }
+        return userChoice;
     }
 }

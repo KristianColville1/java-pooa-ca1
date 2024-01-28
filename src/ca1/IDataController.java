@@ -23,8 +23,12 @@ public interface IDataController {
     /**
      * Gets the users selection through the terminal and
      *
+     * @range indicates the highest selection available by user as integer.
+     * @onInvalidInput method to be called decided by the function calling if
+     * the data is invalid. Makes the dynamic and more reusable. Helps tidy code
+     * elsewhere.
      * @return the users selection as an integer
      */
-    int getUserChoice();
+    int getUserChoice(int range, Runnable onInvalidInput);
 
 }
