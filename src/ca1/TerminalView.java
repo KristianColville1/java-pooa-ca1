@@ -7,7 +7,30 @@ package ca1;
 /**
  *
  * @author kristian
+ * 
+ * Handles the terminal view for the user.
  */
 public class TerminalView {
     
+    /**
+     * TerminalView Constructor
+     */
+    public TerminalView(){
+        
+    }
+    
+    /**
+     * Displays the welcome message and options for the user.
+     */
+    public void displayWelcomeOptions(){
+        System.out.println("#-----------------------------------------------------#");
+        System.out.println("      Welcome to the Student Management System        ");
+        System.out.println("#-----------------------------------------------------#");
+        System.out.println("\n\n");
+        System.out.println("      Please Select an Option:");
+        System.out.println("      (1) Validate Student Data From File");
+        System.out.println("      (2) Add New Student Data");
+        System.out.println("      (3) Exit");
+        System.out.println("\nYour Selection: ");
+    }
 }
