@@ -6,7 +6,7 @@ package ca1;
 
 /**
  *
- * @author kristian colville 
+ * @author kristian colville
  * @student sba23246
  * @github https://github.com/KristianColville1/java-pooa-ca1
  */
@@ -19,7 +19,7 @@ public class CA1 {
         // MainController class object is instantiated here
         MainController mainController = new MainController();
         // Calls startApp method to run the application 
-        mainController.startApp(); 
+        mainController.startApp();
     }
-    
+
 }

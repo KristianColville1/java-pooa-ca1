@@ -6,7 +6,7 @@ package ca1;
 
 /**
  *
- * @author kristian
+ * @author kristian colville
  *
  * Main controller class is the brain of the application.
  */
@@ -14,22 +14,27 @@ public class MainController {
 
     // appRunning is used to keep track of the applications running status.
     private boolean appRunning;
+    private TerminalView menu;
     // dataController is responsible for handling the data logic
     private DataController dataController;
 
     /**
      * Constructor for the MainController class. This constructor initializes
      * MainController objects.
+     * 
+     * Dependencies are injected here.
      */
     public MainController() {
         this.appRunning = true;
+        this.menu = new TerminalView();
+         // menu dependency injected for datacontroller
+        this.dataController = new DataController(menu);
     }
 
     /**
      * Responsible for running the application processes for the user.
      */
     public void startApp() {
-        TerminalView menu = new TerminalView();
         // While loop that continues as long as appRunning is true
         while (appRunning) {
             /**
