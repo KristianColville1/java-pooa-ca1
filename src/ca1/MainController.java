@@ -7,6 +7,8 @@ package ca1;
 /**
  *
  * @author kristian
+ * 
+ * Main controller class is the brain of the application.
  */
 public class MainController {
     
