@@ -31,10 +31,12 @@ public class TerminalView implements ITerminalView {
 
     /**
      * Informs user of the number range expected for valid input.
+     * @param range indicates the expected integer range the input should be.
      */
     @Override
-    public void selectANumberRange() {
-
+    public void selectANumberRange(int range) {
+        System.out.println("Please select a number between 1 - " + range);
+        System.out.println("Enter: ");
     }
 
     /**

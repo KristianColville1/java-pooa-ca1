@@ -73,14 +73,14 @@ public class DataController implements IDataController {
      */
     @Override
     public int getUserChoice(int range, int maxAttempts, Runnable onInvalidInput) {
-        
+
         // if the user has not provided valid input specific by the maxAttempts
         // amount then move on close application.
-        if(maxAttempts <= 0){
+        if (maxAttempts <= 0) {
             System.out.println("Maximum attempts exceeded. Closing application.");
             return -1;
         }
-        
+
         int userChoice = 0;
         Scanner sc = new Scanner(System.in);
         try {
@@ -88,8 +88,7 @@ public class DataController implements IDataController {
             // if the input is valid
             // and greater than range or less than 1
             if (userChoice > range || userChoice < 1) {
-                System.out.println("Please select a number between 1 - " + range);
-                System.out.println("Enter: ");
+                menu.selectANumberRange(range);
                 getUserChoice(range, maxAttempts - 1, onInvalidInput); // recursion to loop back and get valid int
             }
         } catch (InputMismatchException e) {
