@@ -54,7 +54,7 @@ public class DataController implements IDataController {
                 //addNewStudentDataToFile();
                 break;
             default:
-            //stopApplication();
+                stopApplication();
         }
     }
 
@@ -77,7 +77,7 @@ public class DataController implements IDataController {
         // if the user has not provided valid input specific by the maxAttempts
         // amount then move on close application.
         if (maxAttempts <= 0) {
-            
+            menu.maxAttemptsExceededCloseApp();
             return -1;
         }
 
@@ -98,5 +98,10 @@ public class DataController implements IDataController {
             return getUserChoice(range, maxAttempts - 1, onInvalidInput);
         }
         return userChoice;
+    }
+
+    @Override
+    public void stopApplication() {
+        exitApp.run();
     }
 }
