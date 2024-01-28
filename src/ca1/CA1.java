@@ -16,7 +16,11 @@ public class CA1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+
+        // MainController class object is instantiated here
+        MainController mainController = new MainController();
+        // Calls startApp method and runs entire 
+        mainController.startApp(); 
     }
     
 }
