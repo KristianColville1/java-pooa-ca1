@@ -7,14 +7,31 @@ package ca1;
 /**
  *
  * @author kristian colville
- * 
- * This is an interface for menu handling in the terminal application.
- * This interface defines the functionalities that any terminal view
- * should implement.
+ *
+ * This is an interface for menu handling in the terminal application. This
+ * interface defines the functionalities that any terminal view should
+ * implement.
  */
 public interface ITerminalView {
+
     /**
      * Displays the menu options to the user.
      */
     void displayWelcomeOptions();
+
+    /**
+     * Informs user of the expected input to be received.
+     */
+    void selectANumberRange();
+
+    /**
+     * Informs the user that the input given is invalid.
+     */
+    void informUserInputIsInvalid();
+
+    /**
+     * Responds to the user and informs them of that the maximum attempts for
+     * input have been exceeded.
+     */
+    void maxAttemptsExceededCloseApp();
 }
