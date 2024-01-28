@@ -54,6 +54,6 @@ public class TerminalView implements ITerminalView {
      */
     @Override
     public void maxAttemptsExceededCloseApp() {
-
+        System.out.println("Maximum attempts exceeded. Closing application.");
     }
 }

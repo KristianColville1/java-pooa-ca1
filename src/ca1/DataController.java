@@ -77,7 +77,7 @@ public class DataController implements IDataController {
         // if the user has not provided valid input specific by the maxAttempts
         // amount then move on close application.
         if (maxAttempts <= 0) {
-            System.out.println("Maximum attempts exceeded. Closing application.");
+            
             return -1;
         }
 
