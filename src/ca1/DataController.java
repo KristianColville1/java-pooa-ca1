@@ -93,7 +93,7 @@ public class DataController implements IDataController {
             }
         } catch (InputMismatchException e) {
             // if the input is invalid inform them and use recursion to repeat.
-            System.out.println("Your input was not a valid number, try again.");
+            menu.informUserInputIsInvalid();
             onInvalidInput.run();
             return getUserChoice(range, maxAttempts - 1, onInvalidInput);
         }

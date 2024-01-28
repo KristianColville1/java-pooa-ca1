@@ -31,6 +31,7 @@ public class TerminalView implements ITerminalView {
 
     /**
      * Informs user of the number range expected for valid input.
+     *
      * @param range indicates the expected integer range the input should be.
      */
     @Override
@@ -44,7 +45,7 @@ public class TerminalView implements ITerminalView {
      */
     @Override
     public void informUserInputIsInvalid() {
-
+        System.out.println("Your input was not a valid number, try again.");
     }
 
     /**
