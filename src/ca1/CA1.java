@@ -7,6 +7,7 @@ package ca1;
 /**
  *
  * @author kristian
+ * @github https://github.com/KristianColville1/java-pooa-ca1
  */
 public class CA1 {
 
