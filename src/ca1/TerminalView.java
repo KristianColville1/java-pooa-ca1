@@ -6,25 +6,26 @@ package ca1;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 /**
  *
  * @author kristian
- * 
+ *
  * Handles the terminal view for the user.
  */
 public class TerminalView {
-    
+
     /**
      * TerminalView Constructor
      */
-    public TerminalView(){
-        
+    public TerminalView() {
+
     }
-    
+
     /**
      * Displays the welcome message and options for the user.
      */
-    public void displayWelcomeOptions(){
+    public void displayWelcomeOptions() {
         System.out.println("#-----------------------------------------------------#");
         System.out.println("      Welcome to the Student Management System        ");
         System.out.println("#-----------------------------------------------------#");
@@ -34,16 +35,5 @@ public class TerminalView {
         System.out.println("      (2) Add New Student Data");
         System.out.println("      (3) Exit");
         System.out.println("Your Selection: ");
-    }
-    
-    public int getUserChoice(){
-        int choice = 0;
-        try{
-            Scanner sc = new Scanner(System.in);
-            choice = sc.nextInt();
-        } catch(InputMismatchException e){
-            System.out.println("You must enter a number: 1 or 2 or 3");
-        }
-        return choice;
     }
 }
