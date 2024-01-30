@@ -45,4 +45,12 @@ public abstract class Person {
     public String getLastName(){
         return this.lastName;
     }
+    
+    /**
+     * Gets a string of the Person details.
+     * @return String of details.
+     */
+    public String getDetails(){
+        return String.format("%s %s", firstName, lastName);
+    }
 }
