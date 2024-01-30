@@ -36,4 +36,13 @@ public abstract class Person {
     public String getFirstName(){
         return this.firstName;
     }
+    
+    
+    /**
+     * Gets the persons last name.
+     * @return lastName of person
+     */
+    public String getLastName(){
+        return this.lastName;
+    }
 }
