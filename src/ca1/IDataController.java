@@ -39,13 +39,13 @@ public interface IDataController {
     void stopApplication();
     
     /**
-     * readDataFromFileParseAndClean should take file contents according
+     * readDataFromFileParseAndCleanFlow should take file contents according
      * to parameters set in the class and validate the data for the user.
      */
-    void readDataFromFileParseAndClean();
+    void readDataFromFileParseAndCleanFlow();
     
     /**
      * addNewStudentDataToFile should allow the user to input data to a file.
      */
-    void addNewStudentDataToFile();
+    void addNewStudentDataToFileFlow();
 }

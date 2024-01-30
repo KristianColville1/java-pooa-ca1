@@ -100,6 +100,26 @@ public class DataController implements IDataController {
         return userChoice;
     }
 
+
+    /**
+     * Controls the flow for when a user skips the additional functionality
+     * provided and simply wants to read content from a file and parse the data
+     * and have it written to another file in a specific format.
+     */
+    @Override
+    public void readDataFromFileParseAndCleanFlow() {
+
+    }
+    
+    /**
+     * Controls the flow for when a user wants to use the additional functionality provided
+     * and wants to also add data to a file. Controls the logic for this flow.
+     */
+    @Override
+    public void addNewStudentDataToFileFlow(){
+        
+    }
+    
     /**
      * Stops the application - triggers event listener in main controller to
      * stop application.
@@ -107,15 +127,5 @@ public class DataController implements IDataController {
     @Override
     public void stopApplication() {
         exitApp.run();
-    }
-
-    /**
-     * Handles the flow for when a user skips the additional functionality
-     * provided and simply wants to read content from a file and parse the data
-     * and have it written to another file in a specific format.
-     */
-    @Override
-    public void readDataFromFileParseAndClean() {
-
     }
 }
