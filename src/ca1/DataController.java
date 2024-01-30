@@ -100,8 +100,13 @@ public class DataController implements IDataController {
         return userChoice;
     }
 
+    /**
+     * Stops the application - triggers event listener in main controller to
+     * stop application.
+     */
     @Override
     public void stopApplication() {
         exitApp.run();
     }
+
 }
