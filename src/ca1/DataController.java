@@ -75,7 +75,7 @@ public class DataController implements IDataController {
     public int getUserChoice(int range, int maxAttempts, Runnable onInvalidInput) {
 
         // if the user has not provided valid input specific by the maxAttempts
-        // amount then move on close application.
+        // amount then move on and close application.
         if (maxAttempts <= 0) {
             menu.maxAttemptsExceededCloseApp();
             return -1;
@@ -109,4 +109,13 @@ public class DataController implements IDataController {
         exitApp.run();
     }
 
+    /**
+     * Handles the flow for when a user skips the additional functionality
+     * provided and simply wants to read content from a file and parse the data
+     * and have it written to another file in a specific format.
+     */
+    @Override
+    public void readDataFromFileParseAndClean() {
+
+    }
 }

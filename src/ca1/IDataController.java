@@ -23,10 +23,10 @@ public interface IDataController {
     /**
      * Gets the users selection through the terminal and
      *
-     * @range indicates the highest selection available by user as integer.
-     * @maxAttempts indicates the amount of times to try getting valid input
+     * @param range indicates the highest selection available by user as integer.
+     * @param maxAttempts indicates the amount of times to try getting valid input
      * before giving up. prevents infinite recursion.
-     * @onInvalidInput method to be called decided by the function calling if
+     * @param onInvalidInput method to be called decided by the function calling if
      * the data is invalid. Makes the dynamic and more reusable. Helps tidy code
      * elsewhere.
      * @return the users selection as an integer
