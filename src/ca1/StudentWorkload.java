@@ -31,4 +31,13 @@ public enum StudentWorkload {
         this.classes = classes;
         this.description = description;
     }
+
+    /**
+     * Gets the description for a number of classes.
+     * @return the associated description for the number of classes for a
+     * particular constant.
+     */
+    public String getDescription() {
+        return description;
+    }
 }
