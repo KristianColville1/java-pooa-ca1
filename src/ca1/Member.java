@@ -26,19 +26,33 @@ public abstract class Member extends Person {
      *
      * @param firstName The first name of the member.
      * @param lastName The last name of the member.
-     * @param identityNumber The name of the group to which the member belongs.
+     * @param identityNumber The identity number of the member.
      */
     public Member(String firstName, String lastName, String identityNumber) {
         super(firstName, lastName); // Initializes first and last name from the Person class
-        this.identityNumber = identityNumber; // Sets the group name specific to the Member class
+        this.identityNumber = identityNumber; // Sets the identityNumber specific to the Member class
     }
 
     /**
-     * Gets the members groupName.
+     * Gets the members identityNumber.
      *
-     * @return the groupName
+     * @return the identityNumber
      */
     public String getIdentityNumber() {
         return this.identityNumber;
     }
+
+    /**
+     * Retrieves detailed information about a Member. Overrides the getDetails
+     * method from the Person class to include the identity number. This is
+     * polymorphism.
+     *
+     * @return string containing the first name, last name, and identity number
+     * of the member.
+     */
+    @Override
+    public String getDetails() {
+        return String.format("%s %s %s", getFirstName(), getLastName(), identityNumber);
+    }
+
 }
