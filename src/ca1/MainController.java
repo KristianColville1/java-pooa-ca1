@@ -21,19 +21,18 @@ public class MainController {
     /**
      * Constructor for the MainController class. This constructor initializes
      * MainController objects.
-     * 
+     *
      * Dependencies are injected here.
-     * 
+     *
      * Event listeners are injected here.
      */
     public MainController() {
         this.appRunning = true;
         this.menu = new TerminalView();
         /**
-         * Injecting dependencies into the DataController.
-         * menu: provides access to the menu instance to modify the terminal
-         * lambda expression: enables DataController to control the applications
-         * running state.
+         * Injecting dependencies into the DataController. menu: provides access
+         * to the menu instance to modify the terminal lambda expression:
+         * enables DataController to control the applications running state.
          * When the lambda expression is invoked it will signal the application
          * to stop.
          */
@@ -57,12 +56,11 @@ public class MainController {
              * down the application.
              *
              */
-
-            // displays the welcome options to the user in the terminal
-            menu.displayWelcomeOptions();
-            
             try {
                 // Application Logic
+                // displays the welcome options to the user in the terminal
+                menu.displayWelcomeOptions();
+                dataController.handleUserFlow();
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());
             }
