@@ -48,10 +48,10 @@ public class DataController implements IDataController {
 
         switch (userChoice) {
             case 1:
-                //readDataFromFileParseAndClean();
+                readDataFromFileParseAndCleanFlow();
                 break;
             case 2:
-                //addNewStudentDataToFile();
+                addNewStudentDataToFileFlow();
                 break;
             default:
                 stopApplication();
