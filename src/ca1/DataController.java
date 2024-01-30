@@ -46,6 +46,14 @@ public class DataController implements IDataController {
          */
         int userChoice = getUserChoice(3, 5, () -> menu.displayWelcomeOptions());
 
+        /**
+         * Depending on the user choice from the welcome menu options the
+         * application will flow in different directions.
+         *
+         * case1: the application performs the default flow. 
+         * case2: the application performs the additional functionality which
+         * includes adding contents from terminal to the file.
+         */
         switch (userChoice) {
             case 1:
                 readDataFromFileParseAndCleanFlow();
@@ -100,7 +108,6 @@ public class DataController implements IDataController {
         return userChoice;
     }
 
-
     /**
      * Controls the flow for when a user skips the additional functionality
      * provided and simply wants to read content from a file and parse the data
@@ -110,16 +117,17 @@ public class DataController implements IDataController {
     public void readDataFromFileParseAndCleanFlow() {
 
     }
-    
+
     /**
-     * Controls the flow for when a user wants to use the additional functionality provided
-     * and wants to also add data to a file. Controls the logic for this flow.
+     * Controls the flow for when a user wants to use the additional
+     * functionality provided and wants to also add data to a file. Controls the
+     * logic for this flow.
      */
     @Override
-    public void addNewStudentDataToFileFlow(){
-        
+    public void addNewStudentDataToFileFlow() {
+
     }
-    
+
     /**
      * Stops the application - triggers event listener in main controller to
      * stop application.
