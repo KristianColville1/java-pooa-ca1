@@ -17,4 +17,18 @@ package ca1;
  */
 public abstract class Member extends Person {
 
+    private final String groupName;
+
+    /**
+     * Constructs a new Member with specified first name, last name, and group
+     * name. Inherits first and last name properties from the Person class.
+     *
+     * @param firstName The first name of the member.
+     * @param lastName The last name of the member.
+     * @param groupName The name of the group to which the member belongs.
+     */
+    public Member(String firstName, String lastName, String groupName) {
+        super(firstName, lastName); // Initializes first and last name from the Person class
+        this.groupName = groupName; // Sets the group name specific to the Member class
+    }
 }
