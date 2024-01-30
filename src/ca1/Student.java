@@ -16,4 +16,24 @@ package ca1;
  */
 public final class Student extends Member {
 
+    private int numOfClasses;
+    private String workload;
+
+    /**
+     * 
+     * @param firstName of the student
+     * @param lastName of the student
+     * @param studentID the identification number of the student
+     * @param numOfClasses 
+     */
+    public Student(
+            String firstName,
+            String lastName,
+            String studentID,
+            int numOfClasses
+    ) {
+        super(firstName, lastName, studentID);
+        this.numOfClasses = numOfClasses;
+    }
+
 }
