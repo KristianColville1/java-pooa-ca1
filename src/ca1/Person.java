@@ -16,8 +16,8 @@ package ca1;
  * Allows for specialised subclasses.
  */
 public abstract class Person {
-    private String firstName;
-    private String lastName;
+    private final String firstName;
+    private final String lastName;
     
     /**
      * Person constructor sets up the person objects.
