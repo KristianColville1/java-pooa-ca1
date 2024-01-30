@@ -31,4 +31,12 @@ public abstract class Member extends Person {
         super(firstName, lastName); // Initializes first and last name from the Person class
         this.groupName = groupName; // Sets the group name specific to the Member class
     }
+    
+    /**
+     * Gets the members groupName.
+     * @return the groupName
+     */
+    public String getGroupName(){
+        return this.groupName;
+    }
 }
