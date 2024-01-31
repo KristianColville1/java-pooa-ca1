@@ -5,9 +5,15 @@
 package ca1;
 
 /**
+ * Abstract class representing a generic file reader.
+ * This class is designed to be sub classed with a specific type parameter T, 
+ * indicating the type of data that will be read from a file.
+ * Subclasses must implement the
  *
+ * @param <T> The type of data that this reader will process and return.
  * @author kristian
  */
-public class FileReader {
-    
+public abstract class FileReader<T> {
+
 }
+
