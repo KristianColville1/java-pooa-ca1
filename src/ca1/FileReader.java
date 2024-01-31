@@ -34,6 +34,8 @@ public abstract class FileReader<T> {
      * Validates a single data item of type T using a provided validator of type
      * V. This is a generic method that introduces its own type parameter V.
      *
+     * This method must be implemented by subclasses to validate the data.
+     *
      * @param <V> The type of the validator.
      * @param dataItem the data item to validate.
      * @param validator the validator object used for validation.
@@ -41,4 +43,15 @@ public abstract class FileReader<T> {
      * otherwise.
      */
     public abstract <V> boolean validateData(T dataItem, V validator);
+
+    /**
+     * Processes a list of objects of type T in a custom way.
+     *
+     * This method must be implemented by subclasses for how to process the
+     * data.
+     *
+     * @param dataList
+     * @return
+     */
+    public abstract List<T> processData(List<T> dataList);
 }
