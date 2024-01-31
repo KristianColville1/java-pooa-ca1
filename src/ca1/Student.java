@@ -17,14 +17,14 @@ package ca1;
 public final class Student extends Member {
 
     private int numOfClasses;
-    private String workload;
+    private StudentWorkload workload; // enum
 
     /**
-     * 
+     * Student constructor configures the student properties.
      * @param firstName of the student
      * @param lastName of the student
      * @param studentID the identification number of the student
-     * @param numOfClasses 
+     * @param numOfClasses the student studies
      */
     public Student(
             String firstName,
@@ -34,6 +34,7 @@ public final class Student extends Member {
     ) {
         super(firstName, lastName, studentID);
         this.numOfClasses = numOfClasses;
+        this.workload = StudentWorkload.setWorkload(numOfClasses);
     }
-
+    
 }

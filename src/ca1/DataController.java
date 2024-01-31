@@ -44,7 +44,10 @@ public class DataController implements IDataController {
          * not provide a valid integer. sets the maximum attempts before giving
          * up.
          */
-        int userChoice = getUserChoice(3, 5, () -> menu.displayWelcomeOptions());
+        int userChoice = getUserChoice(
+                3,
+                5,
+                () -> menu.displayWelcomeOptions());
 
         /**
          * Depending on the user choice from the welcome menu options the

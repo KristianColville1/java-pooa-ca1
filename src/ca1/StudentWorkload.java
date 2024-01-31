@@ -50,7 +50,7 @@ public enum StudentWorkload {
      * @throws IllegalArgumentException if numOfClasses is less than 1 or higher
      * than 8.
      */
-    public StudentWorkload setWorkload(int numOfClasses) {
+    public static StudentWorkload setWorkload(int numOfClasses) {
         if (numOfClasses < 1 || numOfClasses > 8) {
             throw new IllegalArgumentException(
                     "Number of classes must be greater"
