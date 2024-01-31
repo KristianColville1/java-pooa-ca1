@@ -21,6 +21,7 @@ public final class Student extends Member {
 
     /**
      * Student constructor configures the student properties.
+     *
      * @param firstName of the student
      * @param lastName of the student
      * @param studentID the identification number of the student
@@ -36,5 +37,15 @@ public final class Student extends Member {
         this.numOfClasses = numOfClasses;
         this.workload = StudentWorkload.setWorkload(numOfClasses);
     }
-    
+
+    /**
+     * Getter for retrieving the encapsulated workload description. The workload
+     * is determined by the StudentWorkload enum, which maps a range of
+     * descriptions to the number of classes they take.
+     *
+     * @return the description of student workload
+     */
+    public String getWorkloadDescription() {
+        return workload.getDescription();
+    }
 }
