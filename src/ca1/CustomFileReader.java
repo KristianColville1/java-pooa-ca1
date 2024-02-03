@@ -15,7 +15,7 @@ import java.util.List;
  * @param <T> The type of data that this reader will process and return.
  * @author kristian
  */
-public abstract class FileReader<T> {
+public abstract class CustomFileReader<T> {
 
     /**
      * Reads data from a file in the required location and converts it into a
