@@ -42,11 +42,22 @@ public class StudentRepository {
     }
 
     /**
-     * Adds an invalid student object to the invalidStudents array list for storage.
+     * Adds an invalid student object to the invalidStudents array list for
+     * storage.
      *
-     * @param student The Student object to be added to the invalid students list.
+     * @param student The Student object to be added to the invalid students
+     * list.
      */
     public void addInvalidStudent(Student student) {
         invalidStudents.add(student);
+    }
+
+    /**
+     * Retrieves the list of valid student objects
+     *
+     * @return A List of Student objects representing the valid students.
+     */
+    public List<Student> getValidStudents() {
+        return validStudents;
     }
 }
