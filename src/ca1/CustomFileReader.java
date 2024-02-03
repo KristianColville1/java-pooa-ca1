@@ -4,6 +4,7 @@
  */
 package ca1;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,6 +17,18 @@ import java.util.List;
  * @author kristian
  */
 public abstract class CustomFileReader<T> {
+
+    // A protected variable that subclasses can access and manipulate
+    protected List<T> fileContentsList = new ArrayList<T>();
+
+    /**
+     * Constructor for CustomFileReader.
+     *
+     * Initializes the fileContentsList when called by sub classes.
+     */
+    public CustomFileReader() {
+        this.fileContentsList = new ArrayList<T>();
+    }
 
     /**
      * Reads data from a file in the required location and converts it into a
