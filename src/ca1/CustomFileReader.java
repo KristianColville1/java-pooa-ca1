@@ -25,10 +25,8 @@ public abstract class CustomFileReader<T> {
      * file contents in the desired format.
      *
      * @param filePath to locate and read.
-     * @return list of file contents in the type specified in the
-     * implementation.
      */
-    public abstract List<T> readData(String filePath);
+    public abstract void readData(String filePath);
 
     /**
      * Validates a single data item of type T using a provided validator of type

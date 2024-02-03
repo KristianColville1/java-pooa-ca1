@@ -8,6 +8,7 @@ import java.util.List;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Final class StudentFileReader is the last inheritance of FileReader.
@@ -20,10 +21,24 @@ import java.io.IOException;
  * @author kristian
  */
 public final class StudentFileReader extends CustomFileReader{
-
+    private List<Student> allStudents;
+    
+    public StudentFileReader(){
+        this.allStudents = new ArrayList<Student>();
+    }
+    
+    /**
+     * Reads the data from the file.
+     * 
+     * @param filePath The location of the file being read.
+     */
     @Override
-    public List<Student> readData(String filePath) {
-
+    public void readData(String filePath) {
+        try(BufferedReader br = new BufferedReader(new FileReader(filePath))){
+            
+        } catch (IOException e){
+            System.out.println(e);
+        }
     }
 
     @Override
