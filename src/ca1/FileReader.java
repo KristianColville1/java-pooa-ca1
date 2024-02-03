@@ -50,8 +50,8 @@ public abstract class FileReader<T> {
      * This method must be implemented by subclasses for how to process the
      * data.
      *
-     * @param dataList
-     * @return
+     * @param dataList for processing.
+     * @return list of processed data.
      */
     public abstract List<T> processData(List<T> dataList);
 }
