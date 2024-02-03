@@ -13,43 +13,59 @@ import java.util.ArrayList;
 /**
  * Final class StudentFileReader is the last inheritance of FileReader.
  * StudentFileReader must not be extended.
- * 
+ *
  * This class reads a specific type of file called 'students.txt'.
- * 
- * The main responsibility of this class is to read that file, parse it correctly
- * and place the information gathered into student objects.
+ *
+ * The main responsibility of this class is to read that file, parse it
+ * correctly and place the information gathered into student objects.
+ *
  * @author kristian
  */
-public final class StudentFileReader extends CustomFileReader{
-    private List<Student> allStudents;
-    
-    public StudentFileReader(){
-        this.allStudents = new ArrayList<Student>();
-    }
-    
+public final class StudentFileReader extends CustomFileReader {
+
+    private List<Student> allStudentsList;
+
     /**
-     * Reads the data from the file.
-     * 
+     * Constructor for StudentFileReader.
+     *
+     * Initializes the fileContentsList for storing information from a file.
+     */
+    public StudentFileReader() {
+        super();
+        this.allStudentsList = new ArrayList<Student>();
+    }
+
+    /**
+     * Reads the data from the file and stores the file contents in a list.
+     *
      * @param filePath The location of the file being read.
      */
     @Override
     public void readData(String filePath) {
-        try(BufferedReader br = new BufferedReader(new FileReader(filePath))){
-            
-        } catch (IOException e){
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            /**
+             * Read each line of the file. While reading is possible. if the
+             * line contains blank space then don't add it.
+             */
+            while ((line = br.readLine()) != null) {
+                if (!line.trim().isEmpty()) {
+                    fileContentsList.add(line); // stores each line in list
+                }
+            }
+        } catch (IOException e) {
             System.out.println(e);
         }
     }
 
     @Override
     public boolean validateData(Object dataItem, Object validator) {
-        
+        return false;
     }
 
     @Override
     public List processData(List dataList) {
-
+        return fileContentsList;
     }
-    
-    
+
 }
