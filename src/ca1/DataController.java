@@ -4,7 +4,9 @@
  */
 package ca1;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -57,12 +59,13 @@ public class DataController implements IDataController {
          * Depending on the user choice from the welcome menu options the
          * application will flow in different directions.
          *
-         * case1: the application performs the default flow. 
-         * case2: the application performs the additional functionality which
-         * includes adding contents from terminal to the file.
+         * case1: the application performs the default flow. case2: the
+         * application performs the additional functionality which includes
+         * adding contents from terminal to the file.
          */
         switch (userChoice) {
             case 1:
+                System.out.println("1 selected");
                 readDataFromFileParseAndCleanFlow();
                 break;
             case 2:
@@ -76,8 +79,6 @@ public class DataController implements IDataController {
     /**
      * Gets input from the user using Scanner.
      *
-     * Uses recursion until it gets valid input from the user.
-     *
      * @param range indicates the options available to the user between 1 and
      * range.
      * @param maxAttempts indicates the amount of times to try getting valid
@@ -88,30 +89,35 @@ public class DataController implements IDataController {
      */
     @Override
     public int getUserChoice(int range, int maxAttempts, Runnable onInvalidInput) {
-
-        // if the user has not provided valid input specific by the maxAttempts
-        // amount then move on and close application.
-        if (maxAttempts <= 0) {
-            menu.maxAttemptsExceededCloseApp();
-            return -1;
-        }
-
-        int userChoice = 0;
         Scanner sc = new Scanner(System.in);
-        try {
-            userChoice = sc.nextInt();
-            // if the input is valid
-            // and greater than range or less than 1
-            if (userChoice > range || userChoice < 1) {
-                menu.selectANumberRange(range);
-                getUserChoice(range, maxAttempts - 1, onInvalidInput); // recursion to loop back and get valid int
+        int userChoice;
+
+        while (maxAttempts > 0) {
+            try {
+                System.out.println("Enter your choice: ");
+                userChoice = sc.nextInt();
+
+                // check if the choice is within the valid range
+                if (userChoice >= 1 && userChoice <= range) {
+                    return userChoice; // return the valid choice
+                } else {
+                    // Inform the user about the valid range and max attempts
+                    menu.selectANumberRange(range);
+                    maxAttempts--;
+                    onInvalidInput.run(); // execute the invalid input handler
+                }
+            } catch (InputMismatchException e) {
+                // if the input is invalid inform the user
+                menu.informUserInputIsInvalid();
+                maxAttempts--;
+                onInvalidInput.run(); // execute the invalid input handler
+                sc.next(); // consumes the invalid input to avoid infinite loop
             }
-        } catch (InputMismatchException e) {
-            // if the input is invalid inform them and use recursion to repeat.
-            menu.informUserInputIsInvalid();
-            onInvalidInput.run();
-            return getUserChoice(range, maxAttempts - 1, onInvalidInput);
         }
+
+        // inform user max attempts exceeded and close the app
+        menu.maxAttemptsExceededCloseApp();
+        userChoice = 3; // default for closing app
         return userChoice;
     }
 
@@ -122,8 +128,13 @@ public class DataController implements IDataController {
      */
     @Override
     public void readDataFromFileParseAndCleanFlow() {
-        
-        
+//        studentFileReader.readData("./src/ca1/students.txt");
+//        ArrayList<String> fileContents = (ArrayList<String>) studentFileReader.getFileContents();
+//        for(String l : fileContents){
+//            System.out.println(l);
+//        }
+//        stopApplication();
+        readFileData();
     }
 
     /**
@@ -143,5 +154,9 @@ public class DataController implements IDataController {
     @Override
     public void stopApplication() {
         exitApp.run();
+    }
+
+    public void readFileData() {
+
     }
 }
