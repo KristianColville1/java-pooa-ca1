@@ -26,10 +26,14 @@ public class StudentRepository {
     /**
      * Constructs a new StudentData instance. Initializes empty lists for both
      * valid and invalid students.
+     *
+     * Sets the type stored in the ArrayLists as Student objects only providing
+     * stronger type checking and automatically casts the objects retrieved from
+     * the list to the Student type.
      */
     public StudentRepository() {
-        this.validStudents = new ArrayList<>();
-        this.invalidStudents = new ArrayList<>();
+        this.validStudents = new ArrayList<Student>();
+        this.invalidStudents = new ArrayList<Student>();
     }
 
     /**
