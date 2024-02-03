@@ -15,8 +15,10 @@ import java.util.Scanner;
  */
 public class DataController implements IDataController {
 
-    private TerminalView menu; // TerminalMenu instance.
-    private Runnable exitApp; // Runnable to stop app.
+    private final TerminalView menu; // TerminalMenu instance.
+    private final Runnable exitApp; // Runnable to stop app.
+    private final StudentRepository studentRepository; // student object storage
+    private final StudentFileReader studentFileReader; // reads custom file
 
     /**
      * Constructor for DataController.
@@ -30,6 +32,8 @@ public class DataController implements IDataController {
     public DataController(TerminalView menu, Runnable exitApp) {
         this.menu = menu;
         this.exitApp = exitApp;
+        this.studentRepository = new StudentRepository();
+        this.studentFileReader = new StudentFileReader();
     }
 
     /**
@@ -118,7 +122,8 @@ public class DataController implements IDataController {
      */
     @Override
     public void readDataFromFileParseAndCleanFlow() {
-
+        
+        
     }
 
     /**
