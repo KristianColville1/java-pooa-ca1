@@ -27,8 +27,18 @@ public class StudentRepository {
      * Constructs a new StudentData instance. Initializes empty lists for both
      * valid and invalid students.
      */
-    public StudentRepository(){
+    public StudentRepository() {
         this.validStudents = new ArrayList<>();
         this.invalidStudents = new ArrayList<>();
     }
+
+    /**
+     * Adds student object to the validStudents array list for storage.
+     *
+     * @param student The Student object to be added to the valid students list.
+     */
+    public void addValidStudent(Student student) {
+        validStudents.add(student);
+    }
+
 }
