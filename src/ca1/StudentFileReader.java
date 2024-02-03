@@ -5,6 +5,9 @@
 package ca1;
 
 import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * Final class StudentFileReader is the last inheritance of FileReader.
@@ -16,6 +19,22 @@ import java.util.List;
  * and place the information gathered into student objects.
  * @author kristian
  */
-public final class StudentFileReader extends FileReader{
+public final class StudentFileReader extends CustomFileReader{
+
+    @Override
+    public List<Student> readData(String filePath) {
+
+    }
+
+    @Override
+    public boolean validateData(Object dataItem, Object validator) {
+        
+    }
+
+    @Override
+    public List processData(List dataList) {
+
+    }
+    
     
 }
