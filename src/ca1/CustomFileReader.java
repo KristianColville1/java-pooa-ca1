@@ -22,7 +22,7 @@ public abstract class CustomFileReader<T> {
     protected List<T> fileContentsList = new ArrayList<T>();
 
     /**
-     * Constructor for CustomFileReader.
+     * Constructor for CustomFileReader abstract class.
      *
      * Initializes the fileContentsList when called by sub classes.
      */
@@ -42,6 +42,17 @@ public abstract class CustomFileReader<T> {
     public abstract void readData(String filePath);
 
     /**
+     * Processes a list of objects of type T in a custom way.
+     *
+     * This method must be implemented by subclasses for how to process the
+     * data.
+     *
+     * @param dataList for processing.
+     * @return list of processed data.
+     */
+    public abstract List<T> processData(List<T> dataList);
+
+    /**
      * Validates a single data item of type T using a provided validator of type
      * V. This is a generic method that introduces its own type parameter V.
      *
@@ -55,14 +66,4 @@ public abstract class CustomFileReader<T> {
      */
     public abstract <V> boolean validateData(T dataItem, V validator);
 
-    /**
-     * Processes a list of objects of type T in a custom way.
-     *
-     * This method must be implemented by subclasses for how to process the
-     * data.
-     *
-     * @param dataList for processing.
-     * @return list of processed data.
-     */
-    public abstract List<T> processData(List<T> dataList);
 }
