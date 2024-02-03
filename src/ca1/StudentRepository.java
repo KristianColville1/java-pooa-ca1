@@ -60,4 +60,13 @@ public class StudentRepository {
     public List<Student> getValidStudents() {
         return validStudents;
     }
+
+    /**
+     * Retrieves the list of invalid student objects
+     *
+     * @return A List of Student objects representing the invalid students.
+     */
+    public List<Student> getInvalidStudents() {
+        return invalidStudents;
+    }
 }
