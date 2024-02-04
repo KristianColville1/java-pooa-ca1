@@ -129,16 +129,18 @@ public class DataController implements IDataController {
      * Controls the flow for when a user skips the additional functionality
      * provided and simply wants to read content from a file and parse the data
      * and have it written to another file in a specific format.
+     *
+     * Reads the data from a file and stores the information in the student
+     * repository. Writes the data to another file and writes the invalid data
+     * to the terminal.
      */
     @Override
     public void readDataFromFileParseAndCleanFlow() {
-//        studentFileReader.readData("./src/ca1/students.txt");
-//        ArrayList<String> fileContents = (ArrayList<String>) studentFileReader.getFileContents();
-//        for(String l : fileContents){
-//            System.out.println(l);
-//        }
-//        stopApplication();
-        readFileData();
+        studentFileHandler.readData("students.txt");
+        studentFileHandler.storeStudentInformationInRepository();
+        studentFileHandler.writeDataToFile("status.txt");
+        menu.writeInvalidDataToTerminal(studentRepository.getInvalidStudents());
+        stopApplication();
     }
 
     /**
@@ -158,9 +160,5 @@ public class DataController implements IDataController {
     @Override
     public void stopApplication() {
         exitApp.run();
-    }
-
-    public void readFileData() {
-
     }
 }
