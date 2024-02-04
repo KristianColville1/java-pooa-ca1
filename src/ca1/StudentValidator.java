@@ -39,11 +39,6 @@ public class StudentValidator {
             // validates the student ID
             if (!validateTheStudentID(student)) {
                 student.setValidStatus(false);
-                student.isInvalidBecause(
-                        "Student ID",
-                        String.format(
-                                "student ID is invalid: %s",
-                                student.getIdentityNumber()));
             }
         }
     }
@@ -78,22 +73,26 @@ public class StudentValidator {
      */
     public Boolean validateTheStudentID(Student student) {
         String id = student.getIdentityNumber();
-        
+
         // check minium length of id
         if (!checkMinStringLength(id, 6)) {
+            student.isInvalidBecause("Student ID Length",
+                    "incorrect id length");
             return false;
         }
-        
+
         // check minimum year
         String year = id.substring(0, 2);
         if (!checkMinInt(year, 20)) {
+            student.isInvalidBecause("Student ID Year",
+                    "Year is invalid");
             return false;
         }
 
         // check if numbers after year is 2 or 3 letters
         Boolean hasTwoLetters;
         String letters = id.substring(2, 4);
-        if (!checkForLettersOnly(id.substring(4, 5))) {
+        if (!checkForLettersOnly(id.substring(2, 4))) {
             letters += id.charAt(4);
             hasTwoLetters = false;
         } else {
@@ -102,9 +101,11 @@ public class StudentValidator {
 
         // perform check on letters after year if only letters return true
         if (!checkForLettersOnly(letters)) {
+            student.isInvalidBecause("Student ID Letters",
+                    "Letters after the year are invalid");
             return false;
         }
-        
+
         // check where to start indexing from letters after numbers
         String theRest;
         if (hasTwoLetters) {
@@ -115,6 +116,9 @@ public class StudentValidator {
 
         // check if the number after the letters is valid between 1 - 200 
         if (!checkStringsIntRangeBetweenMinMax(theRest, 1, 200)) {
+            student.isInvalidBecause("Student ID Numbers",
+                    "The last value in the ID is not between"
+                    + " 1 - 200 inclusively");
             return false;
         }
 
