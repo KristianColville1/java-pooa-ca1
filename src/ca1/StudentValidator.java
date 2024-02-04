@@ -70,6 +70,12 @@ public class StudentValidator {
         return data.matches(regex);
     }
 
+    /**
+     * Validates student data and performs various checks.
+     * 
+     * @param student the object to validate
+     * @return true of false
+     */
     public Boolean validateTheStudentID(Student student) {
         String id = student.getIdentityNumber();
 
@@ -99,16 +105,20 @@ public class StudentValidator {
             return false;
         }
 
+        // check where to start indexing from letters after numbers
         String theRest;
         if (hasTwoLetters) {
-            theRest = id.substring(4, -1);
+            theRest = id.substring(4, id.length() - 1);
         } else {
-            theRest = id.substring(5, -1);
+            theRest = id.substring(5, id.length() - 1);
         }
 
-        if (checkMinInt(theRest)) {
+        // check if the number after the letters is valid between 1 - 200 
+        if (checkStringsIntRangeBetweenMinMax(theRest, 1, 200)) {
             return false;
         }
+
+        return true;
     }
 
     /**
