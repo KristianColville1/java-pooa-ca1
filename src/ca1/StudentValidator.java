@@ -70,7 +70,24 @@ public class StudentValidator {
         return data.matches(regex);
     }
 
+    
     public Boolean validateTheStudentID(Student student) {
+        String id = student.getIdentityNumber();
+        
+        // check minium length of id
+        if(!checkMiniumStringLength(id, 6)) return false;
+        
+        
         return false;
+    }
+    
+    /**
+     * Checks the minium length of a string and returns true or false.
+     * @param text string to examine
+     * @param maxLength the minium length to check for
+     * @return true or false
+     */
+    public Boolean checkMiniumStringLength(String text, int minLength){
+        return text.length() < minLength;
     }
 }
