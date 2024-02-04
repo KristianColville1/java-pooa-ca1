@@ -68,4 +68,12 @@ public abstract class FileHandler<T> {
      * @param fileName the name of the file to write to.
      */
     public abstract void writeDataToFile(String fileName);
+    
+    
+    /**
+     * Overloaded abstract method for manual writing to file.
+     * @param fileName the name of the file to write to.
+     * @param manual Boolean for if manual writing required.
+     */
+    public abstract void writeDataToFile(String fileName, Boolean manual);
 }
