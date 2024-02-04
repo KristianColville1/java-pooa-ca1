@@ -18,10 +18,10 @@ import java.util.HashMap;
  */
 public final class Student extends Member {
 
-    private int numOfClasses;
-    private StudentWorkload workload; // enum
+    private final int numOfClasses;
+    private final StudentWorkload workload; // enum
     private boolean isValid;
-    private HashMap<String, String> invalidReasons;
+    private final HashMap<String, String> invalidReasons;
 
     /**
      * Student constructor configures the student properties.
@@ -75,15 +75,24 @@ public final class Student extends Member {
         StudentWorkload description;
         try {
             description = StudentWorkload.setWorkload(numOfClasses);
-            isValid = true;
+            isValid = true; // valid student so far
         } catch (IllegalArgumentException e) {
             description = StudentWorkload.INVALID;
             invalidReasons.put(
                     "workload", String.format(
                             "The workload is invalid: %d",
                             numOfClasses));
-            isValid = false;
+            isValid = false; // immediately invalid
         }
         return description;
+    }
+    
+    /**
+     * Gets the current validation status of a student object.
+     * 
+     * @return the Boolean representing the students validity
+     */
+    public Boolean isStudentValid(){
+        return isValid;
     }
 }
