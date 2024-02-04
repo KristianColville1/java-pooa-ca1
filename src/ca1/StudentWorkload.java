@@ -15,7 +15,8 @@ public enum StudentWorkload {
     VERY_LIGHT(1, "Very Light"),
     LIGHT(2, "Light"),
     PART_TIME(3, "Part Time"),
-    FULL_TIME(6, "Full TIME");
+    FULL_TIME(6, "Full Time"),
+    INVALID(0, "Invalid");
 
     private final int classes;
     private final String description;
