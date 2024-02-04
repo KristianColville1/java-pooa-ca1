@@ -6,9 +6,12 @@ package ca1;
 
 import java.util.List;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Final class StudentFileHandler is the last inheritance of FileHandler.
@@ -150,8 +153,26 @@ public final class StudentFileHandler extends FileHandler<Student> {
         }
     }
 
+    /**
+     * Writes the valid student data to a file.
+     * 
+     * @param fileName the location to write the information to
+     */
     @Override
     public void writeDataToFile(String fileName) {
-
+        List<Student> data = studentRepository.getValidStudents();
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))){
+            for(Student student : data){
+                writer.write(
+                        String.format(
+                                "%s - %s",
+                                student.getIdentityNumber(),
+                                student.getLastName()));
+                writer.newLine();
+                writer.write(student.getWorkloadDescription());
+            }
+        } catch(IOException e){
+            
+        }
     }
 }
