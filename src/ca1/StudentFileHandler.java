@@ -12,6 +12,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Final class StudentFileHandler is the last inheritance of FileHandler.
@@ -179,4 +181,29 @@ public final class StudentFileHandler extends FileHandler<Student> {
             System.out.println("Error writing data to file");
         }
     }
+    
+    /**
+     * Overloaded method writeDataToFile for deciding which type of writing
+     * is needed in the application flow.
+     * 
+     * @param fileName the location of the file to write to
+     * @param manual Boolean to decide which route to take
+     */
+    @Override
+    public void writeDataToFile(String fileName, Boolean manual){
+        // if not manual writing then normal flow
+        if(!manual){
+            writeDataToFile(fileName);
+        }
+        StudentFileWriter writer;
+        try {
+            writer = new StudentFileWriter(new FileWriter(fileName));
+            writer.handleManualWritingFlow();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        
+    }
+    
+   
 }
