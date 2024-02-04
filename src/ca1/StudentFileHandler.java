@@ -158,16 +158,19 @@ public final class StudentFileHandler extends FileHandler<Student> {
 
     /**
      * Writes the valid student data to a file.
-     * 
+     *
      * @param fileName the location to write the information to
      */
     @Override
     public void writeDataToFile(String fileName) {
         List<Student> data = studentRepository.getValidStudents();
         // try to write to file location
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))){
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             // for each student object write the data to the terminal
-            for(Student student : data){
+            for (Student student : data) {
+                System.out.println("PRINTING" + student.getFirstName());
+                System.out.println(student.getLastName());
+                System.out.println(student.getIdentityNumber());
                 writer.write(
                         String.format(
                                 "%s - %s",
@@ -178,34 +181,37 @@ public final class StudentFileHandler extends FileHandler<Student> {
                 writer.newLine();
                 writer.newLine();
             }
-        } catch(IOException e){
+        } catch (IOException e) {
             System.out.println("Error writing data to file");
         }
     }
-    
+
     /**
-     * Overloaded method writeDataToFile for deciding which type of writing
-     * is needed in the application flow.
-     * 
+     * Overloaded method writeDataToFile for deciding which type of writing is
+     * needed in the application flow.
+     *
      * @param fileName the location of the file to write to
      * @param manual Boolean to decide which route to take
      */
     @Override
-    public void writeDataToFile(String fileName, Boolean manual){
+    public void writeDataToFile(String fileName, Boolean manual) {
         // if not manual writing then normal flow
-        if(!manual){
+        if (manual == false) {
             writeDataToFile(fileName);
         }
         // creates the StudentFileWriter and handles that user flow
         StudentFileWriter writer;
         try {
-            writer = new StudentFileWriter(new FileWriter(fileName), menu, () -> exitApp.run());
+            writer = new StudentFileWriter(new FileWriter(fileName),
+                    menu,
+                    () -> exitApp.run(),
+                    allStudentsList,
+                    studentRepository);
             writer.handleManualWritingFlow(); // handle the user flow
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        
+
     }
-    
-   
+
 }

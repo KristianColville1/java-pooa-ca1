@@ -73,12 +73,12 @@ public class StudentValidator {
      */
     public Boolean validateTheStudentID(Student student) {
         String id = student.getIdentityNumber();
-
+        Boolean isDefinitelyInvalid = false;
         // check minium length of id
         if (!checkMinStringLength(id, 6)) {
             student.isInvalidBecause("Student ID Length",
                     "incorrect id length");
-            return false;
+            isDefinitelyInvalid = true;
         }
 
         // check minimum year
@@ -86,7 +86,7 @@ public class StudentValidator {
         if (!checkMinInt(year, 20)) {
             student.isInvalidBecause("Student ID Year",
                     "Year is invalid");
-            return false;
+            isDefinitelyInvalid = true;
         }
 
         // check if numbers after year is 2 or 3 letters
@@ -103,7 +103,7 @@ public class StudentValidator {
         if (!checkForLettersOnly(letters)) {
             student.isInvalidBecause("Student ID Letters",
                     "Letters after the year are invalid");
-            return false;
+            isDefinitelyInvalid = true;
         }
 
         // check where to start indexing from letters after numbers
@@ -119,9 +119,12 @@ public class StudentValidator {
             student.isInvalidBecause("Student ID Numbers",
                     "The last value in the ID is not between"
                     + " 1 - 200 inclusively");
-            return false;
+            isDefinitelyInvalid = true;
         }
 
+        if (isDefinitelyInvalid == true) {
+            return false;
+        }
         return true;
     }
 

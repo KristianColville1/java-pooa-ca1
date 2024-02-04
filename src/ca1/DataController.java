@@ -71,7 +71,6 @@ public class DataController implements IDataController {
          */
         switch (userChoice) {
             case 1:
-                System.out.println("1 selected");
                 readDataFromFileParseAndCleanFlow();
                 break;
             case 2:
@@ -79,6 +78,7 @@ public class DataController implements IDataController {
                 break;
             default:
                 stopApplication();
+                break;
         }
     }
 
@@ -95,7 +95,7 @@ public class DataController implements IDataController {
     public void readDataFromFileParseAndCleanFlow() {
         studentFileHandler.readData("students.txt");
         studentFileHandler.storeStudentInformationInRepository();
-        studentFileHandler.writeDataToFile("status.txt", false);
+        studentFileHandler.writeDataToFile("status.txt");
         menu.writeInvalidDataToTerminal(studentRepository.getInvalidStudents());
         menu.displayWelcomeOptions();
         handleUserFlow(); // shows main menu again
@@ -109,6 +109,11 @@ public class DataController implements IDataController {
     @Override
     public void addNewStudentDataToFileFlow() {
         studentFileHandler.writeDataToFile("status.txt", true);
+        studentFileHandler.storeStudentInformationInRepository();
+        studentFileHandler.writeDataToFile("status.txt");
+        menu.writeInvalidDataToTerminal(studentRepository.getInvalidStudents());
+        menu.displayWelcomeOptions();
+        handleUserFlow();
     }
 
     /**

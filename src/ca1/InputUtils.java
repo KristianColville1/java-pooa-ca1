@@ -71,4 +71,11 @@ public class InputUtils {
         userSelection = sc.nextLine();
         return userSelection;
     }
+    
+    public static int getNextInt(){
+        int userSelection;
+        Scanner sc = new Scanner(System.in);
+        userSelection = sc.nextInt();
+        return userSelection;
+    }
 }
