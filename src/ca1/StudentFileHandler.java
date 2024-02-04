@@ -21,7 +21,7 @@ import java.util.ArrayList;
  *
  * @author kristian
  */
-public final class StudentFileReader extends CustomFileReader {
+public final class StudentFileHandler extends FileHandler {
 
     private List<Student> allStudentsList;
 
@@ -30,7 +30,7 @@ public final class StudentFileReader extends CustomFileReader {
      *
      * Initializes the fileContentsList for storing information from a file.
      */
-    public StudentFileReader() {
+    public StudentFileHandler() {
         super();
         this.allStudentsList = new ArrayList<Student>();
     }
@@ -45,27 +45,29 @@ public final class StudentFileReader extends CustomFileReader {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             /**
-             * Read each line of the file. While reading is possible. if the
-             * line contains blank space then don't add it.
+             * While reading is possible read each line, if the line contains
+             * blank space then don't add it.
+             * 
+             * Store each line in the fileContentsList.
              */
             while ((line = br.readLine()) != null) {
                 if (!line.trim().isEmpty()) {
-                    fileContentsList.add(line); // stores each line in list
+                    fileContentsList.add(line);
                 }
             }
         } catch (IOException e) {
-            System.out.println(e);
+            System.out.println(e); // catch the I/O exception
         }
-    }
-
-    @Override
-    public boolean validateData(Object dataItem, Object validator) {
-        return false;
     }
 
     @Override
     public List processData(List dataList) {
         return fileContentsList;
+    }
+
+    @Override
+    public boolean validateData(Object dataItem, Object validator) {
+        return false;
     }
 
 }

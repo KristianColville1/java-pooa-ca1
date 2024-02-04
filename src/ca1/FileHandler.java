@@ -16,7 +16,7 @@ import java.util.List;
  * @param <T> The type of data that this reader will process and return.
  * @author kristian
  */
-public abstract class CustomFileReader<T> {
+public abstract class FileHandler<T> {
 
     // A protected variable that subclasses can access and manipulate
     protected List<T> fileContentsList = new ArrayList<T>();
@@ -26,7 +26,7 @@ public abstract class CustomFileReader<T> {
      *
      * Initializes the fileContentsList when called by sub classes.
      */
-    public CustomFileReader() {
+    public FileHandler() {
         this.fileContentsList = new ArrayList<T>();
     }
 
