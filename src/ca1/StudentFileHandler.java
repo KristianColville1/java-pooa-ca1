@@ -161,7 +161,9 @@ public final class StudentFileHandler extends FileHandler<Student> {
     @Override
     public void writeDataToFile(String fileName) {
         List<Student> data = studentRepository.getValidStudents();
+        // try to write to file location
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))){
+            // for each student object write the data to the terminal
             for(Student student : data){
                 writer.write(
                         String.format(
@@ -170,9 +172,11 @@ public final class StudentFileHandler extends FileHandler<Student> {
                                 student.getLastName()));
                 writer.newLine();
                 writer.write(student.getWorkloadDescription());
+                writer.newLine();
+                writer.newLine();
             }
         } catch(IOException e){
-            
+            System.out.println("Error writing data to file");
         }
     }
 }
