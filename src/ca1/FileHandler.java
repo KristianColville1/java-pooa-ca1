@@ -64,6 +64,8 @@ public abstract class FileHandler<T> {
     
     /**
      * Writes the data to a file in a specific format unique to the subclasses.
+     * 
+     * @param fileName the name of the file to write to.
      */
-    public abstract void writeDataToFile();
+    public abstract void writeDataToFile(String fileName);
 }
