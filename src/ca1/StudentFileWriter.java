@@ -4,10 +4,20 @@
  */
 package ca1;
 
+import java.io.BufferedWriter;
+import java.io.Writer;
+
 /**
- *
+ * Final class StudentFileWriter extends built in BufferedWriter.
+ * 
+ * Handles manual writing to file for user.
+ * 
  * @author kristian
  */
-public class StudentFileWriter {
+public final class StudentFileWriter extends BufferedWriter{
+    
+    public StudentFileWriter(Writer writer) {
+        super(writer);
+    }
     
 }
