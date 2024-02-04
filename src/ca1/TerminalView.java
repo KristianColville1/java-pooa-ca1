@@ -4,6 +4,9 @@
  */
 package ca1;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  *
  * @author kristian colville
@@ -55,5 +58,30 @@ public class TerminalView implements ITerminalView {
     @Override
     public void maxAttemptsExceededCloseApp() {
         System.out.println("Maximum attempts exceeded. Closing application.");
+    }
+
+    /**
+     * Writes invalid to the terminal.
+     *
+     * Takes in a list of students to write to the terminal, uses a lambda to
+     * map the hash map key values to the terminal with reasons why each student
+     * is invalid.
+     *
+     * @param students list of student objects to use
+     */
+    public void writeInvalidDataToTerminal(List<Student> students) {
+        System.out.println("#-----------------------------------------------------#");
+        System.out.println("---------------------Invalid Data Detected-------------");
+        System.out.println("                     RESULTS:");
+        for (Student student : students) {
+            System.out.println("This student is invalid: ");
+            System.out.println(String.format("%s %s", student.getFirstName(), student.getLastName()));
+            System.out.println("REASONS:");
+            student.getInvalidReasons().forEach((key, value) -> {
+                System.out.println(String.format("%s : %s", key, value));
+            });
+            System.out.println("\n\n");
+        }
+
     }
 }
