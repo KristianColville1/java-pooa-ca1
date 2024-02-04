@@ -27,6 +27,7 @@ public final class StudentFileHandler extends FileHandler<Student> {
 
     private final List<Student> allStudentsList;
     private final StudentRepository studentRepository;
+    private final TerminalView menu;
 
     /**
      * Constructor for StudentFileHandler.
@@ -37,10 +38,11 @@ public final class StudentFileHandler extends FileHandler<Student> {
      *
      * @param studentRepository the location to store the extracted data
      */
-    public StudentFileHandler(StudentRepository studentRepository) {
+    public StudentFileHandler(StudentRepository studentRepository, TerminalView menu) {
         super();
         this.allStudentsList = new ArrayList<Student>();
         this.studentRepository = studentRepository;
+        this.menu = menu;
     }
 
     /**
@@ -195,9 +197,10 @@ public final class StudentFileHandler extends FileHandler<Student> {
         if(!manual){
             writeDataToFile(fileName);
         }
+        // creates the StudentFileWriter and handles that user flow
         StudentFileWriter writer;
         try {
-            writer = new StudentFileWriter(new FileWriter(fileName));
+            writer = new StudentFileWriter(new FileWriter(fileName), menu);
             writer.handleManualWritingFlow();
         } catch (IOException e) {
             System.out.println(e.getMessage());

@@ -40,7 +40,7 @@ public interface ITerminalView {
     void maxAttemptsExceededCloseApp();
 
     /**
-     * Should inform user of the selection they made in the terminal
+     * Should inform user of the selection they made in the terminal.
      */
     void informUserOfInputChosen(String selection);
 }

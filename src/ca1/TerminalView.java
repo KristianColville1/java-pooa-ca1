@@ -61,6 +61,18 @@ public class TerminalView implements ITerminalView {
     }
 
     /**
+     * Informs the user of the selection they made.
+     *
+     * @param selection the chosen input by user
+     */
+    @Override
+    public void informUserOfInputChosen(String selection) {
+        System.out.println("Your Selection:");
+        System.out.println(selection);
+        System.out.println("\n");
+    }
+
+    /**
      * Writes invalid to the terminal.
      *
      * Takes in a list of students to write to the terminal, uses a lambda to
@@ -88,5 +100,14 @@ public class TerminalView implements ITerminalView {
             System.out.println("\n\n");
         }
 
+    }
+    
+    public void doesUserWantToCreateAnotherStudent(){
+        System.out.println("Would you");
+    }
+    
+    public void manualStudentInputHeader(){
+        System.out.println("#-----------------------------------------------------#");
+        System.out.println("-------------------Student Input-----------------------");
     }
 }

@@ -6,6 +6,8 @@ package ca1;
 
 import java.io.BufferedWriter;
 import java.io.Writer;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Final class StudentFileWriter extends built in BufferedWriter.
@@ -14,23 +16,21 @@ import java.io.Writer;
  *
  * @author kristian
  */
-public final class StudentFileWriter extends BufferedWriter
-        implements IUserInput {
+public final class StudentFileWriter extends BufferedWriter{
 
-    public StudentFileWriter(Writer writer) {
+    private final TerminalView menu;
+    private final List students;
+    public StudentFileWriter(Writer writer, TerminalView menu) {
         super(writer);
+        this.menu = menu;
+        this.students = new ArrayList<Student>();
     }
 
-    @Override
-    public void queryUser() {
+
+    public void handleManualWritingFlow(){
+        
     }
 
-    @Override
-    public void confirmUserSelection() {
-    }
 
-    @Override
-    public void writeUsersSelectionToFile() {
-    }
 
 }
