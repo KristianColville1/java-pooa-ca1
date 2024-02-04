@@ -7,16 +7,12 @@ package ca1;
 import java.util.List;
 
 /**
+ * StudentValidator is responsible for handling validation logic of student
+ * objects.
  *
  * @author kristian
  */
 public class StudentValidator {
-
-    private final StudentRepository studentRepository;
-
-    public StudentValidator(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
-    }
 
     /**
      * Performs validation checks on student data and sets the valid status of
