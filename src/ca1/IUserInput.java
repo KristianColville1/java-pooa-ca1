@@ -10,4 +10,18 @@ package ca1;
  */
 public interface IUserInput {
     
+    /**
+     * Should query the user for input
+     */
+    void queryUser();
+    
+    /**
+     * Should confirm the user's input
+     */
+    void confirmUserSelection();
+    
+    /**
+     * Should write the selection by a user to a file
+     */
+    void writeUsersSelectionToFile();
 }
