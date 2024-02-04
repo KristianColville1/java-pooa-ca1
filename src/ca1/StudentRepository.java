@@ -6,6 +6,8 @@ package ca1;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * StudentRepository class holds two data structures called array lists.
@@ -22,6 +24,7 @@ public class StudentRepository {
 
     private List<Student> validStudents;
     private List<Student> invalidStudents;
+    private Map<String, List<Student>> studentData;
 
     /**
      * Constructs a new StudentData instance. Initializes empty lists for both
@@ -30,10 +33,13 @@ public class StudentRepository {
      * Sets the type stored in the ArrayLists as Student objects only providing
      * stronger type checking and automatically casts the objects retrieved from
      * the list to the Student type.
+     *
+     * Stores the array lists in a hash map.
      */
     public StudentRepository() {
         this.validStudents = new ArrayList<Student>();
         this.invalidStudents = new ArrayList<Student>();
+        this.studentData = new HashMap<>();
     }
 
     /**
@@ -72,5 +78,18 @@ public class StudentRepository {
      */
     public List<Student> getInvalidStudents() {
         return invalidStudents;
+    }
+
+    /**
+     * Retrieves the hash map of all student data.
+     *
+     * @return the hash map containing array lists for valid and invalid
+     * students
+     */
+    public Map<String, List<Student>> getStudentData() {
+        studentData.clear(); // empty first so data is up to date
+        studentData.put("validStudents", validStudents);
+        studentData.put("invalidStudents", invalidStudents);
+        return studentData;
     }
 }
