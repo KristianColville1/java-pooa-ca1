@@ -74,7 +74,7 @@ public class TerminalView implements ITerminalView {
         System.out.println("#-----------------------------------------------------#");
         System.out.println("---------------------Invalid Data Detected-------------");
         System.out.println("                     RESULTS:");
-        
+
         // for each student object
         for (Student student : students) {
             // print out the invalid infomation
