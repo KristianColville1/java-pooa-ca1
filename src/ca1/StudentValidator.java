@@ -70,24 +70,47 @@ public class StudentValidator {
         return data.matches(regex);
     }
 
-    
     public Boolean validateTheStudentID(Student student) {
         String id = student.getIdentityNumber();
-        
+
         // check minium length of id
-        if(!checkMiniumStringLength(id, 6)) return false;
-        
-        
+        if (!checkMinStringLength(id, 6)) {
+            return false;
+        }
+
+        // check minimum year
+        String year = id.substring(0, 2);
+        if (!checkMinInt(id, 20)) {
+            return false;
+        }
         return false;
     }
-    
+
     /**
      * Checks the minium length of a string and returns true or false.
+     *
      * @param text string to examine
      * @param maxLength the minium length to check for
      * @return true or false
      */
-    public Boolean checkMiniumStringLength(String text, int minLength){
+    public Boolean checkMinStringLength(String text, int minLength) {
         return text.length() < minLength;
+    }
+
+    /**
+     * Checks if a string after being converted to an integer is greater than or
+     * equal to another integer.
+     *
+     * @param text the string representation of an integer
+     * @param min the integer to check against
+     */
+    public Boolean checkMinInt(String text, int min) {
+        int checker;
+        try {
+            checker = Integer.parseInt(text);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return checker >= min;
     }
 }
