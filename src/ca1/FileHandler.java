@@ -61,4 +61,9 @@ public abstract class FileHandler<T> {
      */
     public abstract void validateData(List<T> dataItem);
 
+    
+    /**
+     * Writes the data to a file in a specific format unique to the subclasses.
+     */
+    public abstract void writeDataToFile();
 }
