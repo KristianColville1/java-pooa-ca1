@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Abstract class representing a generic file reader. This class is designed to
+ * Abstract class representing a generic file handler. This class is designed to
  * be sub classed with a specific type parameter T, indicating the type of data
  * that will be read from a file. Subclasses must implement the methods to
  * define how data is read, processed and validated.
@@ -19,7 +19,7 @@ import java.util.List;
 public abstract class FileHandler<T> {
 
     // A protected variable that subclasses can access and manipulate
-    protected List<T> fileContentsList = new ArrayList<T>();
+    protected List<T> fileContentsList;
 
     /**
      * Constructor for CustomFileReader abstract class.

@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Final class StudentFileReader is the last inheritance of FileReader.
+ * Final class StudentFileHandler is the last inheritance of FileHandler.
  * StudentFileReader must not be extended.
  *
  * This class reads a specific type of file called 'students.txt'.
@@ -24,15 +24,17 @@ import java.util.ArrayList;
 public final class StudentFileHandler extends FileHandler {
 
     private List<Student> allStudentsList;
-
+    private final StudentRepository studentRepository;
     /**
-     * Constructor for StudentFileReader.
+     * Constructor for StudentFileHandler.
      *
      * Initializes the fileContentsList for storing information from a file.
+     * @param studentRepository the location to store the extracted data
      */
-    public StudentFileHandler() {
+    public StudentFileHandler(StudentRepository studentRepository) {
         super();
         this.allStudentsList = new ArrayList<Student>();
+        this.studentRepository = studentRepository;
     }
 
     /**
