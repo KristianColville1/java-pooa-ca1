@@ -86,13 +86,20 @@ public final class Student extends Member {
         }
         return description;
     }
-    
+
     /**
      * Gets the current validation status of a student object.
-     * 
+     *
      * @return the Boolean representing the students validity
      */
-    public Boolean isStudentValid(){
+    public Boolean isValid() {
         return isValid;
+    }
+    
+    /**
+     * Sets the validity status of the student.
+     */
+    public void setValidStatus(Boolean status){
+        isValid = status;
     }
 }
