@@ -200,7 +200,7 @@ public final class StudentFileHandler extends FileHandler<Student> {
         StudentFileWriter writer;
         try {
             writer = new StudentFileWriter(new FileWriter(fileName), menu, () -> exitApp.run());
-            writer.handleManualWritingFlow();
+            writer.handleManualWritingFlow(); // handle the user flow
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
