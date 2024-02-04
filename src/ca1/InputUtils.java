@@ -60,4 +60,15 @@ public class InputUtils {
         userChoice = 3; // default for closing app
         return userChoice;
     }
+    
+    /**
+     * Gets the next line of text from terminal
+     * @return 
+     */
+    public static String getNextLine(){
+        String userSelection;
+        Scanner sc = new Scanner(System.in);
+        userSelection = sc.nextLine();
+        return userSelection;
+    }
 }
