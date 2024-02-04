@@ -48,8 +48,15 @@ public class StudentValidator {
         }
     }
 
+    /**
+     * Checks if the provided string contains only letters.
+     *
+     * @param data The string to be checked.
+     * @return true if the string contains only letters otherwise false
+     */
     public Boolean checkForLettersOnly(String data) {
-        return false;
+        String regex = "^[a-zA-Z]+$";
+        return data.matches(regex);
     }
 
     public Boolean checkForLettersAndNumbers(String data) {
