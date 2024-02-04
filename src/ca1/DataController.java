@@ -20,7 +20,7 @@ public class DataController implements IDataController {
     private final TerminalView menu; // TerminalMenu instance.
     private final Runnable exitApp; // Runnable to stop app.
     private final StudentRepository studentRepository; // student object storage
-    private final StudentFileReader studentFileReader; // reads custom file
+    private final StudentFileHandler studentFileHandler; // handles student file
 
     /**
      * Constructor for DataController.
@@ -30,12 +30,16 @@ public class DataController implements IDataController {
      * @param exitApp is a Runnable that serves as an event listener to signal
      * that the application should be exited. DataController posses the ability
      * to terminate the application.
+     *
+     * Also initializes a student repository and injects it into the student
+     * file handler.
      */
     public DataController(TerminalView menu, Runnable exitApp) {
         this.menu = menu;
         this.exitApp = exitApp;
         this.studentRepository = new StudentRepository();
-        this.studentFileReader = new StudentFileReader();
+        this.studentFileHandler = new StudentFileHandler(
+                this.studentRepository);
     }
 
     /**
