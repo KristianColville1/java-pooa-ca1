@@ -168,9 +168,6 @@ public final class StudentFileHandler extends FileHandler<Student> {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             // for each student object write the data to the terminal
             for (Student student : data) {
-                System.out.println("PRINTING" + student.getFirstName());
-                System.out.println(student.getLastName());
-                System.out.println(student.getIdentityNumber());
                 writer.write(
                         String.format(
                                 "%s - %s",

@@ -52,12 +52,14 @@ public final class StudentFileWriter extends BufferedWriter {
             switch (userChoice) {
                 case 1:
                     collectAnotherStudentsData();
+                    break;
                 case 2:
                     stopCollectingStudentDataAndValidate();
                     isAddingStudents = false;
+                    break;
                 default:
-                    exitApp.run();
                     isAddingStudents = false;
+                    break;
             }
         }
 
@@ -95,6 +97,9 @@ public final class StudentFileWriter extends BufferedWriter {
         students.add(student);
     }
 
+    /**
+     * Stops the collection process and validates the data collected.
+     */
     public void stopCollectingStudentDataAndValidate() {
         StudentValidator validator = new StudentValidator();
         validator.performValidationChecksOnStudentData(students);

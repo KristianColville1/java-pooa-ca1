@@ -109,7 +109,7 @@ public class TerminalView implements ITerminalView {
         System.out.println("            Would you like to enter another student?");
         System.out.println("            (1) Add another Student");
         System.out.println("            (2) Validate data & back to main menu");
-        System.out.println("            (3) Exit App");
+        System.out.println("            (3) Go back to main menu");
         System.out.println("Your Selection:");
     }
     /**
