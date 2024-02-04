@@ -133,4 +133,18 @@ public class TerminalView implements ITerminalView {
     public void enterStudentsLastName(){
         System.out.println("Enter Students Last Name: ");
     }
+    
+    /**
+     * Outs a line of text to get the students ID
+     */
+    public void enterStudentsID(){
+        System.out.println("Enter Students ID: ");
+    }
+    
+    /**
+     * Outputs a line of text to get the students number of classes
+     */
+    public void enterStudentsNumberOfClasses(){
+        System.out.println("Enter Students number of classes: ");
+    }
 }
