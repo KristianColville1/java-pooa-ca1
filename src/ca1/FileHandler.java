@@ -6,6 +6,7 @@ package ca1;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Abstract class representing a generic file handler. This class is designed to
@@ -19,7 +20,7 @@ import java.util.List;
 public abstract class FileHandler<T> {
 
     // A protected variable that subclasses can access and manipulate
-    protected List<T> fileContentsList;
+    protected List fileContentsList;
 
     /**
      * Constructor for CustomFileReader abstract class.
@@ -27,7 +28,7 @@ public abstract class FileHandler<T> {
      * Initializes the fileContentsList when called by sub classes.
      */
     public FileHandler() {
-        this.fileContentsList = new ArrayList<T>();
+        this.fileContentsList = new ArrayList();
     }
 
     /**
@@ -48,22 +49,16 @@ public abstract class FileHandler<T> {
      * data.
      *
      * @param dataList for processing.
-     * @return list of processed data.
      */
-    public abstract List<T> processData(List<T> dataList);
+    public abstract void processData(List<String> dataList);
 
     /**
-     * Validates a single data item of type T using a provided validator of type
-     * V. This is a generic method that introduces its own type parameter V.
+     * Validates a single data item of type T.
      *
      * This method must be implemented by subclasses to validate the data.
      *
-     * @param <V> The type of the validator.
-     * @param dataItem the data item to validate.
-     * @param validator the validator object used for validation.
-     * @return true if the data item is valid according to the validator, false
-     * otherwise.
+     * @param dataItem the data list to validate.
      */
-    public abstract <V> boolean validateData(T dataItem, V validator);
+    public abstract void validateData(List<T> dataItem);
 
 }

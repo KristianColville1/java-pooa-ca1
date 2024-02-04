@@ -32,6 +32,8 @@ public final class StudentFileHandler extends FileHandler<Student> {
      * Constructor for StudentFileHandler.
      *
      * Initializes the fileContentsList for storing information from a file.
+     * 
+     * Injects the studentRepository dependency.
      *
      * @param studentRepository the location to store the extracted data
      */
@@ -74,10 +76,9 @@ public final class StudentFileHandler extends FileHandler<Student> {
      * Stores them regardless of being valid or invalid for further processing.
      *
      * @param dataList
-     * @return allStudentsList containing list of students.
      */
     @Override
-    public List<Student> processData(List<String> dataList) {
+    public void processData(List<String> dataList) {
         String firstName;
         String lastName;
         String studentID;
@@ -87,24 +88,24 @@ public final class StudentFileHandler extends FileHandler<Student> {
             name = createStudentName(dataList.get(info));
             firstName = name.get(0);
             lastName = name.get(1);
-            studentID = dataList.get(++info);
             classes = Integer.valueOf(dataList.get(++info));
+            studentID = dataList.get(++info);
+            Student student = new Student(firstName, lastName, studentID, classes);
+            allStudentsList.add(student);
         }
-
-        return allStudentsList;
     }
-//
-//    @Override
-//    public boolean validateData(Object dataItem, Object validator) {
-//        return false;
-//    }
 
+
+    @Override
+    public void validateData(List<Student> dataItem) {
+        
+    }
     /**
      * createStudentName is responsible for making the strings containing a
      * students first and last name. Preps this content for validation
      * elsewhere.
      *
-     * @param name
+     * @param name the entire string containing first and last name
      * @return array list containing the first and last name
      */
     public ArrayList<String> createStudentName(String name) {
@@ -124,5 +125,6 @@ public final class StudentFileHandler extends FileHandler<Student> {
 
         return names;
     }
+
 
 }
