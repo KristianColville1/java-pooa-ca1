@@ -70,13 +70,18 @@ public class TerminalView implements ITerminalView {
      * @param students list of student objects to use
      */
     public void writeInvalidDataToTerminal(List<Student> students) {
+        // print invalid results
         System.out.println("#-----------------------------------------------------#");
         System.out.println("---------------------Invalid Data Detected-------------");
         System.out.println("                     RESULTS:");
+        
+        // for each student object
         for (Student student : students) {
+            // print out the invalid infomation
             System.out.println("This student is invalid: ");
             System.out.println(String.format("%s %s", student.getFirstName(), student.getLastName()));
             System.out.println("REASONS:");
+            // for each invalid reason print it out
             student.getInvalidReasons().forEach((key, value) -> {
                 System.out.println(String.format("%s : %s", key, value));
             });
