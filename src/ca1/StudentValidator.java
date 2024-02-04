@@ -59,8 +59,15 @@ public class StudentValidator {
         return data.matches(regex);
     }
 
+    /**
+     * Checks if the provided string contains only letters and/or numbers.
+     *
+     * @param data The string to be checked.
+     * @return true if contains letters and/or numbers
+     */
     public Boolean checkForLettersAndNumbers(String data) {
-        return false;
+        String regex = "^[a-zA-Z0-9]+$";
+        return data.matches(regex);
     }
 
     public Boolean validateTheStudentID(Student student) {
