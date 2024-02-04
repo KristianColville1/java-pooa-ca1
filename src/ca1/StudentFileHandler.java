@@ -9,6 +9,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Final class StudentFileHandler is the last inheritance of FileHandler.
@@ -23,12 +25,14 @@ import java.util.ArrayList;
  */
 public final class StudentFileHandler extends FileHandler {
 
-    private List<Student> allStudentsList;
+    private final List<Student> allStudentsList;
     private final StudentRepository studentRepository;
+
     /**
      * Constructor for StudentFileHandler.
      *
      * Initializes the fileContentsList for storing information from a file.
+     *
      * @param studentRepository the location to store the extracted data
      */
     public StudentFileHandler(StudentRepository studentRepository) {
@@ -49,7 +53,7 @@ public final class StudentFileHandler extends FileHandler {
             /**
              * While reading is possible read each line, if the line contains
              * blank space then don't add it.
-             * 
+             *
              * Store each line in the fileContentsList.
              */
             while ((line = br.readLine()) != null) {
@@ -57,14 +61,37 @@ public final class StudentFileHandler extends FileHandler {
                     fileContentsList.add(line);
                 }
             }
+            processData(fileContentsList); // creates list of students
         } catch (IOException e) {
             System.out.println(e); // catch the I/O exception
         }
     }
 
+    /**
+     * Processes the data extracted from the file and creates an array list
+     * containing all created student objects.
+     *
+     * Stores them regardless of being valid or invalid for further processing.
+     *
+     * @param dataList
+     * @return allStudentsList containing list of students.
+     */
     @Override
-    public List processData(List dataList) {
-        return fileContentsList;
+    public List<Student> processData(List dataList) {
+        for (int studentInfo = 0;
+                studentInfo < fileContentsList.size();
+                studentInfo++) {
+            Student student;
+            student = new Student(
+                    "first",
+                    "last",
+                    "workload",
+                    4
+            );
+            allStudentsList.add(student);
+        }
+
+        return allStudentsList;
     }
 
     @Override
