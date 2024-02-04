@@ -80,10 +80,35 @@ public class StudentValidator {
 
         // check minimum year
         String year = id.substring(0, 2);
-        if (!checkMinInt(id, 20)) {
+        if (!checkMinInt(year, 20)) {
             return false;
         }
-        return false;
+
+        // check if numbers after year is 2 or 3 letters
+        Boolean hasTwoLetters;
+        String letters = id.substring(2, 4);
+        if (!checkForLettersOnly(id.substring(4, 5))) {
+            letters += id.charAt(4);
+            hasTwoLetters = false;
+        } else {
+            hasTwoLetters = true;
+        }
+
+        // perform check on letters after year if only letters return true
+        if (!checkForLettersOnly(letters)) {
+            return false;
+        }
+
+        String theRest;
+        if (hasTwoLetters) {
+            theRest = id.substring(4, -1);
+        } else {
+            theRest = id.substring(5, -1);
+        }
+
+        if (checkMinInt(theRest)) {
+            return false;
+        }
     }
 
     /**
@@ -113,4 +138,25 @@ public class StudentValidator {
         }
         return checker >= min;
     }
+
+    /**
+     * Checks a string after converting to an integer is between min and max
+     * inclusively.
+     *
+     * @param text the string to convert to integer
+     * @param min the minimum value to check for
+     * @param max the maximum value to check for
+     */
+    public Boolean checkStringsIntRangeBetweenMinMax(
+            String text, int min, int max) {
+        try {
+            int value = Integer.parseInt(text);
+            // return the result of checking the range
+            return min <= value && value <= max;
+        } catch (NumberFormatException e) {
+            // if parsing fails then return false;
+            return false;
+        }
+    }
+
 }
