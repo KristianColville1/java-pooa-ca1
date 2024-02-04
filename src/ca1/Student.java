@@ -98,8 +98,19 @@ public final class Student extends Member {
     
     /**
      * Sets the validity status of the student.
+     * @param status the validity of the student object
      */
     public void setValidStatus(Boolean status){
         isValid = status;
+    }
+    
+    /**
+     * Adds a reason why this student is invalid.
+     * 
+     * @param key the type of invalidation
+     * @param value the description of the invalidation
+     */
+    public void isInvalidBecause(String key, String value){
+        invalidReasons.put(key, value);
     }
 }
