@@ -9,8 +9,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Final class StudentFileHandler is the last inheritance of FileHandler.
@@ -99,20 +97,17 @@ public final class StudentFileHandler extends FileHandler<Student> {
 
     /**
      * Validates the student objects and adds them to the studentRepository
+     * using the StudentValidator class.
+     *
+     * Injects the studentRepository into the
      *
      * @param data list of student objects to validate
      */
     @Override
     public void validateData(List<Student> data) {
-        performValidationChecksOnStudentData(data);
-        // store data in the student repository
-        for (Student student : data) {
-            if (student.isValid()) {
-                studentRepository.addValidStudent(student);
-            } else {
-                studentRepository.addInvalidStudent(student);
-            }
-        }
+        // Initializes validator and validates the students
+        StudentValidator validator = new StudentValidator();
+        validator.performValidationChecksOnStudentData(data);
     }
 
     /**
@@ -139,6 +134,20 @@ public final class StudentFileHandler extends FileHandler<Student> {
         }
 
         return names;
+    }
+
+    /**
+     * Stores the student information in the repository
+     */
+    public void storeStudentInformationInRepository() {
+        // store data in the student repository
+        for (Student student : allStudentsList) {
+            if (student.isValid()) {
+                studentRepository.addValidStudent(student);
+            } else {
+                studentRepository.addInvalidStudent(student);
+            }
+        }
     }
 
     @Override
