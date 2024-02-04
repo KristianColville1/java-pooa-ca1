@@ -16,10 +16,7 @@ import java.util.regex.Pattern;
  * Final class StudentFileHandler is the last inheritance of FileHandler.
  * StudentFileReader must not be extended.
  *
- * This class reads a specific type of file called 'students.txt'.
- *
- * The main responsibility of this class is to read that file, parse it
- * correctly and place the information gathered into student objects.
+ * Processes student information from the file contents.
  *
  * @author kristian
  */
@@ -32,7 +29,7 @@ public final class StudentFileHandler extends FileHandler<Student> {
      * Constructor for StudentFileHandler.
      *
      * Initializes the fileContentsList for storing information from a file.
-     * 
+     *
      * Injects the studentRepository dependency.
      *
      * @param studentRepository the location to store the extracted data
@@ -90,16 +87,59 @@ public final class StudentFileHandler extends FileHandler<Student> {
             lastName = name.get(1);
             classes = Integer.valueOf(dataList.get(++info));
             studentID = dataList.get(++info);
-            Student student = new Student(firstName, lastName, studentID, classes);
+            Student student = new Student(
+                    firstName,
+                    lastName,
+                    studentID,
+                    classes);
             allStudentsList.add(student);
+        }
+        validateData(allStudentsList);
+    }
+
+    /**
+     * Validates the student objects and adds them to the studentRepository
+     *
+     * @param data list of student objects to validate
+     */
+    @Override
+    public void validateData(List<Student> data) {
+        // validate
+        for (Student student : data) {
+            /**
+             * if the students last name is blank if the first name contains
+             * only letters if the last name contains letters/numbers
+             */
+            if ("".equals(student.getLastName())
+                    || checkForLettersOnly(student.getFirstName())
+                    || checkForLettersAndNumbers(student.getLastName())) {
+                student.setValidStatus(false);
+                student.isInvalidBecause(
+                        "Student Name",
+                        "first and/or last name is invalid");
+            }
+
+            // validates the student ID
+            if (!validateTheStudentID(student)) {
+                student.setValidStatus(false);
+                student.isInvalidBecause(
+                        "Student ID",
+                        String.format(
+                                "student ID is invalid: %s",
+                                student.getIdentityNumber()));
+            }
+
+        }
+        // store data validated
+        for (Student student : data) {
+            if (student.isValid()) {
+                studentRepository.addValidStudent(student);
+            } else {
+                studentRepository.addInvalidStudent(student);
+            }
         }
     }
 
-
-    @Override
-    public void validateData(List<Student> dataItem) {
-        
-    }
     /**
      * createStudentName is responsible for making the strings containing a
      * students first and last name. Preps this content for validation
@@ -126,5 +166,20 @@ public final class StudentFileHandler extends FileHandler<Student> {
         return names;
     }
 
+    @Override
+    public void writeDataToFile(String fileName) {
 
+    }
+
+    public Boolean checkForLettersOnly(String data) {
+        return false;
+    }
+
+    public Boolean checkForLettersAndNumbers(String data) {
+        return false;
+    }
+
+    public Boolean validateTheStudentID(Student student) {
+        return false;
+    }
 }
