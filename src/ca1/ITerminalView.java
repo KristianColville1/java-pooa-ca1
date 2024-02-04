@@ -22,20 +22,25 @@ public interface ITerminalView {
     void displayWelcomeOptions();
 
     /**
-     * Informs user of the expected input to be received.
+     * Should inform user of the expected input to be received.
      *
      * @param range should specify the expected integer range.
      */
     void selectANumberRange(int range);
 
     /**
-     * Informs the user that the input given is invalid.
+     * Should inform the user that the input given is invalid.
      */
     void informUserInputIsInvalid();
 
     /**
-     * Responds to the user and informs them of that the maximum attempts for
-     * input have been exceeded.
+     * Should respond to the user and informs them of that the maximum attempts
+     * for input have been exceeded.
      */
     void maxAttemptsExceededCloseApp();
+
+    /**
+     * Should inform user of the selection they made in the terminal
+     */
+    void informUserOfInputChosen(String selection);
 }
