@@ -101,13 +101,26 @@ public class TerminalView implements ITerminalView {
         }
 
     }
-    
-    public void doesUserWantToCreateAnotherStudent(){
-        System.out.println("Would you");
-    }
-    
+
+    /**
+     * Outputs a header to show that the user is now entering student data menu
+     */
     public void manualStudentInputHeader(){
         System.out.println("#-----------------------------------------------------#");
         System.out.println("-------------------Student Input-----------------------");
+    }
+    
+    /**
+     * Outputs a line of text to query user for the students first name
+     */
+    public void enterStudentsFirstName(){
+        System.out.println("Enter students First Name: ");
+    }
+    
+    /**
+     * outputs a line of text to query user for the students last name
+     */
+    public void enterStudentsLastName(){
+        System.out.println("Enter Students Last Name: ");
     }
 }
