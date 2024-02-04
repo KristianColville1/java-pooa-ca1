@@ -27,9 +27,9 @@ public class StudentValidator {
              * if the students last name is blank if the first name contains
              * only letters if the last name contains letters/numbers
              */
-            if ("".equals(student.getLastName())
-                    || checkForLettersOnly(student.getFirstName())
-                    || checkForLettersAndNumbers(student.getLastName())) {
+            if (student.getLastName().length() == 0
+                    || !checkForLettersOnly(student.getFirstName())
+                    || !checkForLettersAndNumbers(student.getLastName())) {
                 student.setValidStatus(false);
                 student.isInvalidBecause(
                         "Student Name",
@@ -72,18 +72,18 @@ public class StudentValidator {
 
     /**
      * Validates student data and performs various checks.
-     * 
+     *
      * @param student the object to validate
      * @return true of false
      */
     public Boolean validateTheStudentID(Student student) {
         String id = student.getIdentityNumber();
-
+        
         // check minium length of id
         if (!checkMinStringLength(id, 6)) {
             return false;
         }
-
+        
         // check minimum year
         String year = id.substring(0, 2);
         if (!checkMinInt(year, 20)) {
@@ -104,17 +104,17 @@ public class StudentValidator {
         if (!checkForLettersOnly(letters)) {
             return false;
         }
-
+        
         // check where to start indexing from letters after numbers
         String theRest;
         if (hasTwoLetters) {
-            theRest = id.substring(4, id.length() - 1);
+            theRest = id.substring(5, id.length());
         } else {
-            theRest = id.substring(5, id.length() - 1);
+            theRest = id.substring(6, id.length());
         }
 
         // check if the number after the letters is valid between 1 - 200 
-        if (checkStringsIntRangeBetweenMinMax(theRest, 1, 200)) {
+        if (!checkStringsIntRangeBetweenMinMax(theRest, 1, 200)) {
             return false;
         }
 
@@ -129,7 +129,7 @@ public class StudentValidator {
      * @return true or false
      */
     public Boolean checkMinStringLength(String text, int minLength) {
-        return text.length() < minLength;
+        return text.length() >= minLength;
     }
 
     /**
