@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
  *
  * @author kristian
  */
-public final class StudentFileHandler extends FileHandler {
+public final class StudentFileHandler extends FileHandler<Student> {
 
     private final List<Student> allStudentsList;
     private final StudentRepository studentRepository;
@@ -77,26 +77,52 @@ public final class StudentFileHandler extends FileHandler {
      * @return allStudentsList containing list of students.
      */
     @Override
-    public List<Student> processData(List dataList) {
-        for (int studentInfo = 0;
-                studentInfo < fileContentsList.size();
-                studentInfo++) {
-            Student student;
-            student = new Student(
-                    "first",
-                    "last",
-                    "workload",
-                    4
-            );
-            allStudentsList.add(student);
+    public List<Student> processData(List<String> dataList) {
+        String firstName;
+        String lastName;
+        String studentID;
+        int classes;
+        ArrayList<String> name;
+        for (int info = 0; info < dataList.size(); info++) {
+            name = createStudentName(dataList.get(info));
+            firstName = name.get(0);
+            lastName = name.get(1);
+            studentID = dataList.get(++info);
+            classes = Integer.valueOf(dataList.get(++info));
         }
 
         return allStudentsList;
     }
+//
+//    @Override
+//    public boolean validateData(Object dataItem, Object validator) {
+//        return false;
+//    }
 
-    @Override
-    public boolean validateData(Object dataItem, Object validator) {
-        return false;
+    /**
+     * createStudentName is responsible for making the strings containing a
+     * students first and last name. Preps this content for validation
+     * elsewhere.
+     *
+     * @param name
+     * @return array list containing the first and last name
+     */
+    public ArrayList<String> createStudentName(String name) {
+        ArrayList<String> names = new ArrayList<>();
+
+        // check if the name contains a space
+        if (name.contains(" ")) {
+            // If there's a space split it
+            String[] splitNames = name.split(" ", 2);
+            names.add(splitNames[0]); // Add the first name
+            names.add(splitNames[1]); // Add the last name
+        } else {
+            // if no space add the name to first and make last empty
+            names.add(name);
+            names.add("");
+        }
+
+        return names;
     }
 
 }
