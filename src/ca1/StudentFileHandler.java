@@ -11,9 +11,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Final class StudentFileHandler is the last inheritance of FileHandler.
@@ -28,6 +25,7 @@ public final class StudentFileHandler extends FileHandler<Student> {
     private final List<Student> allStudentsList;
     private final StudentRepository studentRepository;
     private final TerminalView menu;
+    private final Runnable exitApp;
 
     /**
      * Constructor for StudentFileHandler.
@@ -38,11 +36,12 @@ public final class StudentFileHandler extends FileHandler<Student> {
      *
      * @param studentRepository the location to store the extracted data
      */
-    public StudentFileHandler(StudentRepository studentRepository, TerminalView menu) {
+    public StudentFileHandler(StudentRepository studentRepository, TerminalView menu, Runnable exitApp) {
         super();
         this.allStudentsList = new ArrayList<Student>();
         this.studentRepository = studentRepository;
         this.menu = menu;
+        this.exitApp = exitApp;
     }
 
     /**
@@ -200,7 +199,7 @@ public final class StudentFileHandler extends FileHandler<Student> {
         // creates the StudentFileWriter and handles that user flow
         StudentFileWriter writer;
         try {
-            writer = new StudentFileWriter(new FileWriter(fileName), menu);
+            writer = new StudentFileWriter(new FileWriter(fileName), menu, () -> exitApp.run());
             writer.handleManualWritingFlow();
         } catch (IOException e) {
             System.out.println(e.getMessage());

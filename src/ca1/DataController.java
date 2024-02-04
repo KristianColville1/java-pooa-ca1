@@ -40,7 +40,8 @@ public class DataController implements IDataController {
         this.studentRepository = new StudentRepository();
         this.studentFileHandler = new StudentFileHandler(
                 this.studentRepository,
-                this.menu);
+                this.menu,
+                this.exitApp);
     }
 
     /**

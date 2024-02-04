@@ -16,21 +16,23 @@ import java.util.List;
  *
  * @author kristian
  */
-public final class StudentFileWriter extends BufferedWriter{
+public final class StudentFileWriter extends BufferedWriter {
 
     private final TerminalView menu;
     private final List students;
-    public StudentFileWriter(Writer writer, TerminalView menu) {
+    private final Runnable exitApp;
+
+    public StudentFileWriter(Writer writer, TerminalView menu, Runnable exitApp) {
         super(writer);
         this.menu = menu;
         this.students = new ArrayList<Student>();
+        this.exitApp = exitApp;
     }
 
-
-    public void handleManualWritingFlow(){
-        
+    public void handleManualWritingFlow() {
+        menu.manualStudentInputHeader();
+        menu.doesUserWantToCreateAnotherStudent();
+        int userChoice = InputUtils.getUserChoice(3, 6, exitApp);
     }
-
-
 
 }
